@@ -1,4 +1,4 @@
-Vue.component('blog-post', {
+Vue.component("blog-post", {
   props: {
     post: {
       id: Number,
@@ -8,6 +8,7 @@ Vue.component('blog-post', {
         name: String,
       },
     },
+    index: Number,
     count: {
       type: Number,
       default: 0,
@@ -20,15 +21,16 @@ Vue.component('blog-post', {
   data: function () {
     return {
       counter: this.count,
-    }
+    };
   },
   computed: {
-    textCount: function() {
-      return `${this.counter} count`
-    }
+    textCount: function () {
+      return `${this.counter} count`;
+    },
   },
   template: `
     <div>
+      <h3>index: {{ index }}</h3>
       <h3>
         {{ post.title + ' by ' + post.author.name }}
       </h3>
@@ -49,36 +51,36 @@ Vue.component('blog-post', {
       </button>
       <div v-html='post.content'></div>
     </div>
-  `
-})
+  `,
+});
 
 const app = new Vue({
-  el: '#component',
+  el: "#component",
   data: {
     posts: [
       {
         id: 1,
-        title: 'My journey with Vue',
+        title: "My journey with Vue",
         content: '<p style="color: red">Hello</p>',
         author: {
-          name: 'John',
-        }
+          name: "John",
+        },
       },
       {
-        id: 'test',
-        title: 'My journey with Vue arease',
+        id: "test",
+        title: "My journey with Vue arease",
         content: '<p style="color: red">Hello 2</p>',
         author: {
-          name: 'Johnaesras',
-        }
+          name: "Johnaesras",
+        },
       },
     ],
     postFontSize: 1,
     count2: 0,
   },
   methods: {
-    onEnlargeText: function(amount) {
-      this.postFontSize += amount
-    }
-  }
-})
+    onEnlargeText: function (amount) {
+      this.postFontSize += amount;
+    },
+  },
+});
